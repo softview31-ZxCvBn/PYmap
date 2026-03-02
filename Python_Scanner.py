@@ -20,7 +20,7 @@ print(f"{'PYTHON NMAP':^50}")
 print("=" * 50, color['reset'])
 print(color['blue'], "made by Softview31", color['reset'])
 print(color['bold'], color['magenta'])
-target = input("[*] Target: ")
+target = input("[*] Target (ip/url): ")
 get_ip = socket.gethostbyname(target)
 print(f"[*] Target's IP {get_ip}", color['reset'])
 
@@ -69,6 +69,6 @@ if result == True:
   for port in range(1, 65535):
        mainfunc = scan_port(target, port)
        if mainfunc == True:
-           print(f"  {port:>10} {service.get(port, 'Unknown'):>20}")
+           print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
 else:
     print(color['red'], "[-] Host is down, exiting scan", color['reset'])
