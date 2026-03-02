@@ -24,7 +24,7 @@ get_ip = socket.gethostbyname(target)
 print(f"[*] Target's IP {get_ip}" + color['reset'])
 start_port = int(input("Enter the starting port(default:1): "))
 end_port = int(input("Enter the ending port(default: 1024): "))
-timeout = float(input("Enter the amount of seconds to scan each ports")):
+timeout = float(input("Enter the amount of seconds to scan each ports: "))
 def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
