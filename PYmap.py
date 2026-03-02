@@ -22,8 +22,8 @@ print(color['bold'] + color['blue'])
 target = input("[*] Target: ")
 get_ip = socket.gethostbyname(target)
 print(f"[*] Target's IP {get_ip}" + color['reset'])
-start_port = input("Enter the starting port(default:1): ")
-end_port = input("Enter the ending port(default: 1024): ")
+start_port = int(input("Enter the starting port(default:1): "))
+end_port = int(input("Enter the ending port(default: 1024): "))
 def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
@@ -64,7 +64,7 @@ if result == True:
   print(color['yellow'] + "_" * 50)
   print(f"  {'PORT':>10} {'SERVICE':>20}")
   print("_" * 50)
-  for port in range(1, 65535):
+  for port in range(start_port, end_port + 1):
        mainfunc = scan_port(target, port)
        if mainfunc == True:
            print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
