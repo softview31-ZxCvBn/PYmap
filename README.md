@@ -10,7 +10,3 @@ This tool is strictly intended for:
 * **Educational purposes** only.
 * **Authorized security auditing** of authorized networks.
 * **Learning** how the TCP/IP stack handles port requests.
-
-## 📝 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
