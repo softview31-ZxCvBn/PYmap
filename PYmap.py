@@ -1,8 +1,7 @@
-# Python-Port-Scanner-
+# Python-Port-Scanner
 import socket
 import subprocess
-color = {
-"red": "\033[31m",
+color = {                                                     "red": "\033[31m",
 "green": "\033[32m",
 "yellow": "\033[33m",
 "blue": "\033[34m",
@@ -10,19 +9,13 @@ color = {
 "cyan": "\033[36m",
 "white": "\033[37m",
 "bold": "\033[1m",
-"underline": "\033[4m",
-"reset": "\033[0m"
-}
-
-print(color['cyan'], color['bold'])
-print("=" * 50)
-print(f"{'PYTHON NMAP':^50}")
-print("=" * 50, color['reset'])
-print(color['blue'], "made by Softview31", color['reset'])
-print(color['bold'], color['magenta'])
-target = input("[*] Target (ip/url): ")
+"underline": "\033[4m",                                       "reset": "\033[0m"                                            }
+                                                              print(color['cyan'] + color['bold'])
+print("=" * 50)                                               print(f"{'PYmap':^50}")                                       print("=" * 50 + color['reset'])
+print(color['bold'] + color['magenta'] + "made by Softview31" + color['reset'])
+print(color['bold'] + color['blue'])                          target = input("[*] Target: ")
 get_ip = socket.gethostbyname(target)
-print(f"[*] Target's IP {get_ip}", color['reset'])
+print(f"[*] Target's IP {get_ip}" + color['reset'])
 
 def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
@@ -32,8 +25,6 @@ def host_checker(target):
     else:
          return False
 result = host_checker(target)
-if result == True:
-    print("")
 
 def scan_port(target, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -62,8 +53,8 @@ service = {
 }
 
 if result == True:
-  print(color['green'] + color['bold'] +  "[*] Host is up, starting scan...", color['reset'])
-  print(color['yellow'], "_" * 50)
+  print(color['green'] + color['bold'] +  "[*] Host is up, starting scan..." + color['reset'])
+  print(color['yellow'] + "_" * 50)
   print(f"  {'PORT':>10} {'SERVICE':>20}")
   print("_" * 50)
   for port in range(1, 65535):
@@ -71,4 +62,4 @@ if result == True:
        if mainfunc == True:
            print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
 else:
-    print(color['red'], "[-] Host is down, exiting scan", color['reset'])
+    print(color['red'] + "[-] Host is down, exiting scan" + color['reset'])
