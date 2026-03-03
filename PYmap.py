@@ -28,6 +28,7 @@ start_port = int(input("[*]Enter Starting port(default:1): "))
 end_port = int(input("[*] Enter Ending port(default: 1024): "))
 timeout = float(input("[*] Enter the amount of seconds to scan each ports: "))
 print(color['reset'])
+open_ports = []
 def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
@@ -36,7 +37,6 @@ def host_checker(target):
     else:
          return False
 result = host_checker(target)
-open_ports = []
 def scan_port(target, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(timeout)
