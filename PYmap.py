@@ -73,9 +73,11 @@ if result == True:
     threads.append(t)
     t.start()
     if len(threads) % 100 == 0:
-        for t in threads:
+        for t in threads[-100:]:
             t.join()
-        for port in sorted(open_ports):
+    for t in threads:
+            t.join()
+    for port in sorted(open_ports):
             print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
 else:
     print(color['red'] + "[-] Host is down, exiting scan" + color['reset'])
