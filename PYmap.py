@@ -32,7 +32,7 @@ def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
     if response == 0:
-         return True
+         open_ports.append(port)
     else:
          return False
 result = host_checker(target)
@@ -73,7 +73,7 @@ if result == True:
     threads.append(t)
     t.start()
     if len(threads) % 100 == 0:
-        for t in threads[-100:]:
+        for t in threads:
             t.join()
         for port in sorted(open_ports):
             print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
