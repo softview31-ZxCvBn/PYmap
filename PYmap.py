@@ -33,7 +33,7 @@ def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
     if response == 0:
-         open_ports.append(port)
+         return True
     else:
          return False
 result = host_checker(target)
@@ -43,7 +43,7 @@ def scan_port(target, port):
     connection = sock.connect_ex((target, port))
     sock.close()
     if connection == 0:
-        return True
+        open_ports.append(port)
     else:
         return False
 
