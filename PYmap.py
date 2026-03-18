@@ -103,4 +103,4 @@ if result == True:
       print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
 else:
     print(color['red'] + "[-] Host is down, exiting scan" + color['reset'])
-print(color['reset']
+print(color['reset'])
